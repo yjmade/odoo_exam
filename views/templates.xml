@@ -1,0 +1,90 @@
+<openerp>
+    <data>
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
+        <act_window id="action_examin_question" name="asd" res_model="examin.question" view_mode="tree,form" domain='[("category.id","=",active_id)]' context="{'default_category':active_id}"></act_window>
+        <act_window id="action_examin_question_category" name="Library" res_model="examin.question.category" view_mode="tree"></act_window>
+
+        <record model="ir.ui.view" id="view_examin_question_form">
+            <field name="name">examin.question.form</field>
+            <field name="model">examin.question</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <field name="category" placeholder="Category"></field>
+                            <h1>
+                                <field name="body"></field>
+                            </h1>
+                        </div>
+                        <group string="Choices">
+                            <group>
+                                <field name="choice_a" widget="char"></field>
+                                <field name="choice_c" widget="char"></field>
+                            </group>
+                            <group>
+                                <field name="choice_b" widget="char"></field>
+                                <field name="choice_d" widget="char"></field>
+                            </group>
+                        </group>
+                        <group string="Answer">
+                            <field name="answer" nolabel="1"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_examin_question_tree">
+            <field name="name">examin.question.tree</field>
+            <field name="model">examin.question</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="body"></field>
+                    <field name="choice_a"></field>
+                    <field name="choice_b"></field>
+                    <field name="choice_c"></field>
+                    <field name="choice_d"></field>
+                    <field name="answer"></field>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_examin_question_category_tree">
+            <field name="name">examin.question.category.tree</field>
+            <field name="model">examin.question.category</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name" widget="char"></field>
+                    <field name="question_count"></field>
+                    <button string="Questions" type="object" name="action_questions"></button>
+                    <!-- <button string="Questions" type="action" name="%(action_examin_question)d"></button> -->
+                </tree>
+            </field>
+        </record>
+
+        <menuitem name="Exam" sequence="0" id="exam_main_menu"></menuitem>
+        <menuitem name="Configuration" parent="exam_main_menu" id="configuration_main_menu"></menuitem>
+        <!-- <menuitem name="Questions" parent="configuration_main_menu" sequence="1" action="action_examin_question" id="examin_question_menu"></menuitem> -->
+        <menuitem name="Library" parent="configuration_main_menu" sequence="2" action="action_examin_question_category" id="examin_question_category_menu"></menuitem>
+        <!-- <menuitem name="Exam" parent="configuration_main_menu" sequence="3" action="action_examin_exam"></menuitem> -->
+
+    </data>
+</openerp>
