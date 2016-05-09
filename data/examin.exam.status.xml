@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+
+<record model="examin.exam.status" id="examin_exam_draft">
+    <field name="name">Draft</field>
+    <field name="sequence" eval="1"></field>
+</record>
+<record model="examin.exam.status" id="examin_exam_ready">
+    <field name="name">Ready</field>
+    <field name="sequence" eval="2"></field>
+</record>
+<record model="examin.exam.status" id="examin_exam_running">
+    <field name="name">Running</field>
+    <field name="sequence" eval="3"></field>
+</record>
+<record model="examin.exam.status" id="examin_exam_end">
+    <field name="name">End</field>
+    <field name="sequence" eval="4"></field>
+</record>
+
+    </data>
+</openerp>
