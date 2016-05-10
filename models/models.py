@@ -75,9 +75,9 @@ class Exam(models.Model):
     def onchange_start_time(self):
 
         if self.start_time:
-            self.end_time=fields.Datetime.to_string(fields.Datetime.from_string(self.start_time)+datetime.timedelta(hours=2))
+            self.end_time = fields.Datetime.to_string(fields.Datetime.from_string(self.start_time) + datetime.timedelta(hours=2))
         else:
-            self.end_time=False
+            self.end_time = False
 
 
 class Question(models.Model):
@@ -149,8 +149,9 @@ class UserExamin(models.Model):
     @api.one
     @api.depends("start_time", "end_time")
     def _get_total_minutes(self):
+        from_string = fields.Datetime.from_string
         if self.start_time and self.end_time:
-            self.total_minutes = (self.end_time - self.start_time).minutes()
+            self.total_minutes = (from_string(self.end_time) - from_string(self.start_time)).total_seconds() // 60
         else:
             self.total_minutes = False
 
