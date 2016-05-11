@@ -4,6 +4,7 @@
         <act_window id="action_examin_question_category" name="Library" res_model="examin.question.category" view_mode="tree"></act_window>
         <act_window id="action_examin_exam" name="Exam" res_model="examin.exam" view_mode="tree,form"></act_window>
 
+
         <record model="ir.ui.view" id="view_examin_question_form">
             <field name="name">examin.question.form</field>
             <field name="model">examin.question</field>
@@ -94,8 +95,10 @@
                                 <field name="question_num"></field>
                             </group>
                             <group>
+                                <field name="exam_minutes"></field>
                                 <field name="start_time"></field>
                                 <field name="end_time"></field>
+                                <!-- <field name="total_minutes"></field> -->
                             </group>
                         </group>
                         <notebook>
@@ -106,11 +109,7 @@
                                     </tree>
                                 </field>
                                 <field name="user_lines" context="{'default_examin':active_id}" nolabel="1" class="oe_read_only">
-                                    <tree>
-                                        <field name="user"></field>
-                                        <field name="status"></field>
-                                        <field name="score"></field>
-                                    </tree>
+
                                     <form>
                                         <header>
                                             <field name="status" widget="statusbar"></field>
@@ -133,7 +132,7 @@
                                                 </group>
                                             </group>
                                             <group string="Questions">
-                                                <field name="lines">
+                                                <field name="lines" nolabel="1">
                                                     <tree>
                                                         <field name="question"></field>
                                                         <field name="display_answer"></field>
@@ -152,12 +151,24 @@
         </record>
 
 
+        <record model="ir.ui.view" id="view_examin_user_participant_tree">
+            <field name="name">examin.user.participant.tree</field>
+            <field name="model">examin.user.participant</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="user"></field>
+                    <field name="status"></field>
+                    <field name="score"></field>
+                </tree>
+            </field>
+        </record>
 
         <menuitem name="Exam" sequence="0" id="exam_main_menu"></menuitem>
         <menuitem name="Configuration" parent="exam_main_menu" id="configuration_main_menu"></menuitem>
         <!-- <menuitem name="Questions" parent="configuration_main_menu" sequence="1" action="action_examin_question" id="examin_question_menu"></menuitem> -->
         <menuitem name="Library" parent="configuration_main_menu" sequence="2" action="action_examin_question_category" id="examin_question_category_menu"></menuitem>
         <menuitem name="Exam" parent="configuration_main_menu" sequence="3" action="action_examin_exam" id="examin_exam_menu"></menuitem>
+
 
     </data>
 </openerp>

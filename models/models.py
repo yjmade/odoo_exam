@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 import datetime
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 
 
 class ExamStatus(models.Model):
@@ -22,7 +22,7 @@ class Exam(models.Model):
     user_lines = fields.One2many("examin.user.participant", "exam")
     start_time = fields.Datetime()
     end_time = fields.Datetime()
-    time_limit_hours = fields.Float()
+    exam_minutes = fields.Integer()
     users = fields.Many2many("res.users", compute="_get_users", inverse="_set_users")
 
     def get_default_status(self):
@@ -65,7 +65,7 @@ class Exam(models.Model):
     @api.onchange("category")
     def onchange_category(self):
         if self.category:
-            self.name = "%s Test" % self.category.name
+            self.name = _("%s Test") % self.category.name
             self.question_num = self.category.question_count
         else:
             self.name = False
@@ -170,7 +170,7 @@ class UserExaminLine(models.Model):
         ("d", "D"),
     ], string="Choice")
     answer_time = fields.Datetime()
-    display_answer = fields.Text(string="Answer", compute="_get_display_answer")
+    display_answer = fields.Text(string=_("Answer"), compute="_get_display_answer")
     correct = fields.Boolean(compute="_get_display_answer")
 
     @api.one
@@ -182,3 +182,25 @@ class UserExaminLine(models.Model):
         else:
             self.display_answer = False
             self.correct = False
+
+
+class ResUser(models.Model):
+    _inherit = 'res.users'
+
+    ref_id = fields.Char(string=_("Ref Id"))
+    exams = fields.One2many("examin.user.participant", "user")
+
+    def _sync_value(self, value):
+        if "name" in value:
+            value.setdefault("login", value["name"])
+        if "ref_id" in value:
+            value.setdefault("password", value["ref_id"])
+        return value
+
+    @api.multi
+    def write(self, value):
+        return super(ResUser, self).write(self._sync_value(value))
+
+    @api.model
+    def create(self, value):
+        return super(ResUser, self).create(self._sync_value(value))

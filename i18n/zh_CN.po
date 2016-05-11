@@ -1,0 +1,342 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* examin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-11 15:00+0000\n"
+"PO-Revision-Date: 2016-05-11 15:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: examin
+#: code:addons/examin/models/models.py:69
+#, python-format
+msgid "%s Test"
+msgstr "%s考试"
+
+#. module: examin
+#: code:addons/examin/models/models.py:174
+#: model:ir.model.fields,field_description:examin.field_examin_question_answer
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_display_answer
+#: model:ir.ui.view,arch_db:examin.view_examin_question_form
+#, python-format
+msgid "Answer"
+msgstr "答案"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_answer_time
+msgid "Answer time"
+msgstr "答题时间"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_body
+msgid "Body"
+msgstr "题目"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_category
+#: model:ir.model.fields,field_description:examin.field_examin_question_category
+#: model:ir.ui.view,arch_db:examin.view_examin_exam_form
+#: model:ir.ui.view,arch_db:examin.view_examin_question_form
+msgid "Category"
+msgstr "题库类别"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_answer
+msgid "Choice"
+msgstr "选择"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_choice_a
+msgid "Choice a"
+msgstr "A"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_choice_b
+msgid "Choice b"
+msgstr "B"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_choice_c
+msgid "Choice c"
+msgstr "C"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_choice_d
+msgid "Choice d"
+msgstr "D"
+
+#. module: examin
+#: model:ir.ui.view,arch_db:examin.view_examin_question_form
+msgid "Choices"
+msgstr "选项"
+
+#. module: examin
+#: model:ir.ui.menu,name:examin.configuration_main_menu
+msgid "Configuration"
+msgstr "配置"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_correct
+msgid "Correct"
+msgstr "正确"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_create_uid
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_create_uid
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_create_uid
+#: model:ir.model.fields,field_description:examin.field_examin_question_create_uid
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_create_uid
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_create_date
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_create_date
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_create_date
+#: model:ir.model.fields,field_description:examin.field_examin_question_create_date
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_create_date
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_display_name
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_display_name
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_display_name
+#: model:ir.model.fields,field_description:examin.field_examin_question_display_name
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_display_name
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_end_time
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_end_time
+msgid "End time"
+msgstr "结束时间"
+
+#. module: examin
+#: model:ir.actions.act_window,name:examin.action_examin_exam
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_exam
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_user_examin
+#: model:ir.ui.menu,name:examin.exam_main_menu
+#: model:ir.ui.menu,name:examin.examin_exam_menu
+msgid "Exam"
+msgstr "考试"
+
+#. module: examin
+#: model:ir.ui.view,arch_db:examin.view_examin_exam_form
+msgid "Exam Name"
+msgstr "考试名称"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_exam_minutes
+msgid "Exam minutes"
+msgstr "考试时长(分钟)"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_exams
+#: model:ir.model.fields,field_description:examin.field_res_users_exams
+#: model:ir.ui.view,arch_db:examin.view_examin_student_form
+msgid "Exams"
+msgstr "考试"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_id
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_id
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_id
+#: model:ir.model.fields,field_description:examin.field_examin_question_id
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_id
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam___last_update
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status___last_update
+#: model:ir.model.fields,field_description:examin.field_examin_question___last_update
+#: model:ir.model.fields,field_description:examin.field_examin_question_category___last_update
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant___last_update
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line___last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_write_uid
+#: model:ir.model.fields,field_description:examin.field_examin_exam_write_uid
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_write_uid
+#: model:ir.model.fields,field_description:examin.field_examin_question_write_uid
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_write_uid
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_write_uid
+msgid "Last Updated by"
+msgstr "最后更新"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_write_date
+#: model:ir.model.fields,field_description:examin.field_examin_exam_write_date
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_write_date
+#: model:ir.model.fields,field_description:examin.field_examin_question_write_date
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_write_date
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_write_date
+msgid "Last Updated on"
+msgstr "最后更新于"
+
+#. module: examin
+#: model:ir.actions.act_window,name:examin.action_examin_question_category
+#: model:ir.ui.menu,name:examin.examin_question_category_menu
+msgid "Library"
+msgstr "题库"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_lines
+msgid "Lines"
+msgstr "考题"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_name
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_name
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_name
+#: model:ir.ui.view,arch_db:examin.view_examin_student_form
+msgid "Name"
+msgstr "名称"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_question
+msgid "Question"
+msgstr "题目"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_question_num
+msgid "Question Count"
+msgstr "题目数量"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_question_count
+msgid "Question count"
+msgstr "题目数量"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_question_category_questions
+#: model:ir.ui.view,arch_db:examin.view_examin_exam_form
+#: model:ir.ui.view,arch_db:examin.view_examin_question_category_tree
+msgid "Questions"
+msgstr "题目"
+
+#. module: examin
+#: code:addons/examin/models/models.py:191
+#: model:ir.model.fields,field_description:examin.field_res_users_ref_id
+#: model:ir.ui.view,arch_db:examin.view_examin_student_form
+#, python-format
+msgid "Ref Id"
+msgstr "学号"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_score
+msgid "Score"
+msgstr "得分"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_seq
+msgid "Seq"
+msgstr "顺序"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status_sequence
+msgid "Sequence"
+msgstr "顺序"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_start_time
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_start_time
+msgid "Start time"
+msgstr "开始时间"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_status
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_status
+msgid "Status"
+msgstr "状态"
+
+#. module: examin
+#: model:ir.actions.act_window,name:examin.action_examin_student
+#: model:ir.ui.menu,name:examin.examin_student_menu
+#: model:ir.ui.view,arch_db:examin.view_examin_exam_form
+msgid "Student"
+msgstr "学生"
+
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_total_minutes
+msgid "Total minutes"
+msgstr "考试时长(分钟)"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_user_participant_user
+msgid "User"
+msgstr "学生"
+
+#. module: examin
+#: model:ir.model.fields,field_description:examin.field_examin_exam_user_lines
+msgid "User lines"
+msgstr "考试记录"
+
+#. module: examin
+#: model:ir.model,name:examin.model_res_users
+#: model:ir.model.fields,field_description:examin.field_examin_exam_users
+msgid "Users"
+msgstr "学生"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_exam
+msgid "examin.exam"
+msgstr "考试安排"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_exam_status
+msgid "examin.exam.status"
+msgstr "考试状态"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_question
+msgid "examin.question"
+msgstr "考题"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_question_category
+msgid "examin.question.category"
+msgstr "考题分类"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_user_participant
+msgid "examin.user.participant"
+msgstr "考试记录"
+
+#. module: examin
+#: model:ir.model,name:examin.model_examin_user_participant_line
+msgid "examin.user.participant.line"
+msgstr "答题记录"
+
+#. module: examin
+#: selection:examin.user.participant,status:0
+msgid "examing"
+msgstr "考试中"
+
+#. module: examin
+#: selection:examin.user.participant,status:0
+msgid "finish"
+msgstr "完成"
+
+#. module: examin
+#: selection:examin.user.participant,status:0
+msgid "pending"
+msgstr "未开始"
+
