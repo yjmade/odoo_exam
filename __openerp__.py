@@ -27,6 +27,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/res_users.xml',
+        'views/exam.xml',
         "data/examin.exam.status.xml"
     ],
     # only loaded in demonstration mode

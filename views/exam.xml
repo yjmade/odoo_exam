@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+
+
+<act_window id="action_user_exam" name="My Exam" res_model="examin.user.participant" view_mode="tree,form" domain="[('user.id','=',uid)]"></act_window>
+
+
+<record model="ir.ui.view" id="view_user_exam_tree">
+    <field name="name">examin.user_exam.tree</field>
+    <field name="model">examin.user.participant</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="exam"></field>
+            <field name="status"></field>
+            <button string="Start Test" type="object" name="action_start_test" attrs="{'invisible':[('status','!=','pending')]}" confirm="Confirm to start do this test, time will start count from now"></button>
+            <button string="Resume Test" type="object" name="action_resume_test" attrs="{'invisible':[('status','!=','examing')]}"></button>
+        </tree>
+    </field>
+</record>
+
+<record model="ir.actions.act_window.view" id="act_view_user_exam_tree">
+    <field name="act_window_id" ref="action_user_exam"/>
+    <field name="sequence" eval="10"/>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_user_exam_tree"/>
+</record>
+
+<!-- record[model] -->
+
+
+
+<menuitem name="My Exam" sequence="1" id="student_exam_main_menu" parent="exam_main_menu"></menuitem>
+<menuitem name="My Exam" sequence="0" id="student_exam_menu" parent="student_exam_main_menu" action="action_user_exam"></menuitem>
+
+    </data>
+</openerp>

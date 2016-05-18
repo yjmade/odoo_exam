@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import random
 import datetime
-from openerp import models, fields, api, _
+from openerp import models, fields, api, _, exceptions
 
 
 class ExamStatus(models.Model):
     _name = "examin.exam.status"
     _order = "sequence"
 
-    name = fields.Char(size=20)
+    name = fields.Char(size=20, translate=True)
     sequence = fields.Integer()
 
 
@@ -97,6 +97,10 @@ class Question(models.Model):
         ("D", "D"),
     ])
 
+    @property
+    def choices(self):
+        return [(choice, getattr(self, "choice_%s" % choice)) for choice in ["a", "b", "c", "d"]]
+
 
 class Category(models.Model):
     _name = "examin.question.category"
@@ -155,6 +159,45 @@ class UserExamin(models.Model):
         else:
             self.total_minutes = False
 
+    @api.multi
+    def action_start_test(self):
+        self.ensure_one()
+        if not self.status == "pending":
+            raise exceptions.ValidationError(_("Exam has been taken"))
+        if self.search([("user.id", "=", self.user.id), ("status", "=", "examing")]):
+            raise exceptions.ValidationError(_("Cannot have more than one exam taking at once"))
+        self.status = "examing"
+        self.start_time = fields.Datetime.now()
+        url = "/examin/do_exam/%s/" % self.id
+        return {
+            "type": 'ir.actions.act_url',
+            "url": url,
+            "target": "self"
+        }
+
+    @api.multi
+    def action_resume_test(self):
+        self.ensure_one()
+        if not self.status == "examing":
+            raise exceptions.ValidationError(_("Exam has not start yet"))
+        url = "/examin/do_exam/%s/" % self.id
+        return {
+            "type": 'ir.actions.act_url',
+            "url": url,
+            "target": "self"
+        }
+
+    @api.one
+    def caculate_score(self):
+
+        result = [question_line.correct for question_line in self.lines]
+        data = dict(
+            score=result.count(True) * 1. / len(result) * 100,
+            status="finish",
+            end_time=fields.Datetime.now()
+        )
+        self.write(data)
+
 
 class UserExaminLine(models.Model):
     _name = "examin.user.participant.line"
@@ -164,24 +207,27 @@ class UserExaminLine(models.Model):
     seq = fields.Integer()
     question = fields.Many2one("examin.question")
     answer = fields.Selection([
-        ("a", "A"),
-        ("b", "B"),
-        ("c", "C"),
-        ("d", "D"),
+        ("A", "A"),
+        ("B", "B"),
+        ("C", "C"),
+        ("D", "D"),
     ], string="Choice")
     answer_time = fields.Datetime()
     display_answer = fields.Text(string=_("Answer"), compute="_get_display_answer")
-    correct = fields.Boolean(compute="_get_display_answer")
+    correct = fields.Boolean(compute="_get_correct", store=True)
+
+    @api.one
+    @api.depends("question", "answer")
+    def _get_correct(self):
+        self.correct = (self.answer == self.question.answer)
 
     @api.one
     @api.depends("question", "answer")
     def _get_display_answer(self):
         if self.answer:
-            self.display_answer = getattr(self.question, "choice_%s" % self.answer)
-            self.correct = (self.answer == self.question.answer)
+            self.display_answer = getattr(self.question, "choice_%s" % self.answer.lower())
         else:
             self.display_answer = False
-            self.correct = False
 
 
 class ResUser(models.Model):

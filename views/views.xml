@@ -1,59 +1,61 @@
 <openerp>
   <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="examin.list">
-      <field name="name">examin list</field>
-      <field name="model">examin.examin</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="examin.action_window">
-      <field name="name">examin window</field>
-      <field name="res_model">examin.examin</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+<template id="exam_do_exam" name="Exam Page">
+  <t t-call="website.layout">
+    <style>
+      li.question_choice {
+        list-style-type: upper-alpha;
+      }
+    </style>
+    <form action="/examin/results" method="post" enctype="multipart/form-data" class="form-horizontal mt32">
+      <div class="wrap">
+        <div class="container">
+          <div class="mt16 mb16">
+            <h1 class="text-center">
+              <t t-esc="exam_line.exam.name"></t>
+            </h1>
+          </div>
+          <t t-foreach="exam_line.lines" t-as="question_line">
+            <div class="form-group">
+              <div>
+                <h2>
+                  <t t-esc="question_line.seq"/>.
+                  <t t-esc="question_line.question.body"></t>
+                </h2>
+                <ul>
+                  <li class="question_choice">
+                    <input type="radio" t-attf-name="question#{question_line.seq}" t-attf-id="question#{question_line.seq}_a" value="A"/>
+                    <label t-attf-for="question#{question_line.seq}_a"><t t-esc="question_line.question.choice_a"></t></label>
+                  </li>
+                  <li class="question_choice">
+                    <input type="radio" t-attf-name="question#{question_line.seq}" t-attf-id="question#{question_line.seq}_b" value="B"/>
+                    <label t-attf-for="question#{question_line.seq}_b"><t t-esc="question_line.question.choice_b"></t></label>
+                  </li>
+                  <li class="question_choice">
+                    <input type="radio" t-attf-name="question#{question_line.seq}" t-attf-id="question#{question_line.seq}_c" value="C"/>
+                    <label t-attf-for="question#{question_line.seq}_c"><t t-esc="question_line.question.choice_c"></t></label>
+                  </li>
+                  <li class="question_choice">
+                    <input type="radio" t-attf-name="question#{question_line.seq}" t-attf-id="question#{question_line.seq}_d" value="D"/>
+                    <label t-attf-for="question#{question_line.seq}_d"><t t-esc="question_line.question.choice_d"></t></label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </t>
+          <div class="form-group">
+            <div class="col-md-7 col-sm-8">
+              <input type="hidden" name="exam_id" t-att-value="exam_line.id"/>
+              <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <button class="btn btn-primary btn-lg">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </t>
+</template>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="examin.action_server">
-      <field name="name">examin server</field>
-      <field name="model_id" ref="model_examin_examin"/>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="examin" id="examin.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="examin.menu_1" parent="examin.menu_root"/>
-    <menuitem name="Menu 2" id="examin.menu_2" parent="examin.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="examin.menu_1_list" parent="examin.menu_1"
-              action="examin.action_window"/>
-    <menuitem name="Server to list" id="examin" parent="examin.menu_2"
-              action="examin.action_server"/>
-    -->
   </data>
 </openerp>
