@@ -20,4 +20,4 @@ class Examin(http.Controller):
                 question_line.answer = answer
         rec.caculate_score()
         action_user_exam_id = http.request.env["ir.model.data"].xmlid_to_res_id("examin.action_user_exam")
-        return http.request.redirect("/web/#action=%s&id=%s" % (action_user_exam_id, rec.id))
+        return http.request.redirect("/web/#action=%s&id=%s&view_type=form" % (action_user_exam_id, rec.id))

@@ -1,30 +1,30 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* examin
+# 	* examin
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 15:00+0000\n"
+"POT-Creation-Date: 2016-05-18 16:30+0000\n"
 "PO-Revision-Date: 2016-05-11 15:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
 #. module: examin
-#: code:addons/examin/models/models.py:69
+#: code:addons/examin/models/models.py:68
 #, python-format
 msgid "%s Test"
 msgstr "%s考试"
 
 #. module: examin
-#: code:addons/examin/models/models.py:174
+#: code:addons/examin/models/models.py:216
 #: model:ir.model.fields,field_description:examin.field_examin_question_answer
-#: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_display_answer
 #: model:ir.ui.view,arch_db:examin.view_examin_question_form
 #, python-format
 msgid "Answer"
@@ -39,6 +39,12 @@ msgstr "答题时间"
 #: model:ir.model.fields,field_description:examin.field_examin_question_body
 msgid "Body"
 msgstr "题目"
+
+#. module: examin
+#: code:addons/examin/models/models.py:168
+#, python-format
+msgid "Cannot have more than one exam taking at once"
+msgstr "不能同时参加两场或者两场以上考试"
 
 #. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_category
@@ -84,6 +90,11 @@ msgid "Configuration"
 msgstr "配置"
 
 #. module: examin
+#: model:ir.ui.view,arch_db:examin.view_user_exam_tree
+msgid "Confirm to start do this test, time will start count from now"
+msgstr "确认开始考试,将开始计时"
+
+#. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_user_participant_line_correct
 msgid "Correct"
 msgstr "正确"
@@ -119,6 +130,16 @@ msgid "Display Name"
 msgstr "显示名称"
 
 #. module: examin
+#: model:examin.exam.status,name:examin.examin_exam_draft
+msgid "Draft"
+msgstr "草稿"
+
+#. module: examin
+#: model:examin.exam.status,name:examin.examin_exam_end
+msgid "End"
+msgstr "结束"
+
+#. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_end_time
 #: model:ir.model.fields,field_description:examin.field_examin_user_participant_end_time
 msgid "End time"
@@ -139,8 +160,26 @@ msgid "Exam Name"
 msgstr "考试名称"
 
 #. module: examin
+#: code:addons/examin/models/models.py:166
+#, python-format
+msgid "Exam has been taken"
+msgstr "该考试已经参加过了"
+
+#. module: examin
+#: code:addons/examin/models/models.py:182
+#, python-format
+msgid "Exam has not start yet"
+msgstr "考试还没有开始"
+
+#. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_exam_minutes
 msgid "Exam minutes"
+msgstr "考试时长(分钟)"
+
+#. module: examin
+#: code:addons/examin/controllers/controllers.py:11
+#, python-format
+msgid "Exam not start"
 msgstr "考试时长(分钟)"
 
 #. module: examin
@@ -202,6 +241,13 @@ msgid "Lines"
 msgstr "考题"
 
 #. module: examin
+#: model:ir.actions.act_window,name:examin.action_user_exam
+#: model:ir.ui.menu,name:examin.student_exam_main_menu
+#: model:ir.ui.menu,name:examin.student_exam_menu
+msgid "My Exam"
+msgstr "我的考试"
+
+#. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_name
 #: model:ir.model.fields,field_description:examin.field_examin_exam_status_name
 #: model:ir.model.fields,field_description:examin.field_examin_question_category_name
@@ -232,12 +278,26 @@ msgid "Questions"
 msgstr "题目"
 
 #. module: examin
-#: code:addons/examin/models/models.py:191
-#: model:ir.model.fields,field_description:examin.field_res_users_ref_id
+#: model:examin.exam.status,name:examin.examin_exam_ready
+msgid "Ready"
+msgstr "准备好"
+
+#. module: examin
+#: code:addons/examin/models/models.py:236
 #: model:ir.ui.view,arch_db:examin.view_examin_student_form
 #, python-format
 msgid "Ref Id"
 msgstr "学号"
+
+#. module: examin
+#: model:ir.ui.view,arch_db:examin.view_user_exam_tree
+msgid "Resume Test"
+msgstr "%s考试"
+
+#. module: examin
+#: model:examin.exam.status,name:examin.examin_exam_running
+msgid "Running"
+msgstr "考试中"
 
 #. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_user_participant_score
@@ -253,6 +313,11 @@ msgstr "顺序"
 #: model:ir.model.fields,field_description:examin.field_examin_exam_status_sequence
 msgid "Sequence"
 msgstr "顺序"
+
+#. module: examin
+#: model:ir.ui.view,arch_db:examin.view_user_exam_tree
+msgid "Start Test"
+msgstr "开始时间"
 
 #. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_start_time
@@ -273,6 +338,10 @@ msgstr "状态"
 msgid "Student"
 msgstr "学生"
 
+#. module: examin
+#: model:ir.ui.view,arch_db:examin.exam_do_exam
+msgid "Submit"
+msgstr "交卷"
 
 #. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_user_participant_total_minutes
@@ -339,4 +408,3 @@ msgstr "完成"
 #: selection:examin.user.participant,status:0
 msgid "pending"
 msgstr "未开始"
-
