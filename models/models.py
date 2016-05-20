@@ -166,8 +166,10 @@ class UserExamin(models.Model):
             raise exceptions.ValidationError(_("Exam has been taken"))
         if self.search([("user.id", "=", self.user.id), ("status", "=", "examing")]):
             raise exceptions.ValidationError(_("Cannot have more than one exam taking at once"))
-        self.status = "examing"
-        self.start_time = fields.Datetime.now()
+        self.sudo().write(dict(
+            status="examing",
+            start_time=fields.Datetime.now()
+        ))
         url = "/examin/do_exam/%s/" % self.id
         return {
             "type": 'ir.actions.act_url',
@@ -255,9 +257,8 @@ class ResUser(models.Model):
 class IrModelData(models.Model):
     _inherit = 'ir.model.data'
 
-    @api.model
-    def _update(self, model, module, values, xml_id=False, *args, **kwargs):
+    def _update(self, cr, uid, model, module, values, xml_id=False, store=True, noupdate=False, mode='init', res_id=False, context=None):
         if model == "res.users":
             if xml_id is False:
                 xml_id = ""
-        return super(IrModelData, self)._update(model, module, values, xml_id, *args, **kwargs)
+        return super(IrModelData, self)._update(cr, uid, model, module, values, xml_id, store, noupdate, mode, res_id, context)

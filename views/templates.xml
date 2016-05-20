@@ -163,11 +163,11 @@
             </field>
         </record>
 
-        <menuitem name="Exam" sequence="0" id="exam_main_menu"></menuitem>
-        <menuitem name="Configuration" parent="exam_main_menu" id="configuration_main_menu"></menuitem>
+        <menuitem name="Exam" sequence="0" id="exam_main_menu" groups="examin.group_examin_teacher,examin.group_examin_student"></menuitem>
+        <menuitem name="Configuration" parent="exam_main_menu" id="configuration_main_menu" groups="examin.group_examin_teacher"></menuitem>
         <!-- <menuitem name="Questions" parent="configuration_main_menu" sequence="1" action="action_examin_question" id="examin_question_menu"></menuitem> -->
-        <menuitem name="Library" parent="configuration_main_menu" sequence="2" action="action_examin_question_category" id="examin_question_category_menu"></menuitem>
-        <menuitem name="Exam" parent="configuration_main_menu" sequence="3" action="action_examin_exam" id="examin_exam_menu"></menuitem>
+        <menuitem name="Library" parent="configuration_main_menu" sequence="2" action="action_examin_question_category" id="examin_question_category_menu" groups="examin.group_examin_teacher"></menuitem>
+        <menuitem name="Exam" parent="configuration_main_menu" sequence="3" action="action_examin_exam" id="examin_exam_menu" groups="examin.group_examin_teacher"></menuitem>
 
 
     </data>

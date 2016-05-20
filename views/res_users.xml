@@ -1,10 +1,10 @@
 <openerp>
     <data>
 
-<act_window name="Student" res_model="res.users" view_mode="tree,form" id="action_examin_student"></act_window>
+<act_window name="Student" res_model="res.users" view_mode="tree,form" id="action_examin_student" context="{'default_groups_ref':['examin.group_examin_student','base.group_user']}"></act_window>
 
 
-<menuitem name="Student" parent="configuration_main_menu" sequence="4" action="action_examin_student" id="examin_student_menu"></menuitem>
+<menuitem name="Student" parent="configuration_main_menu" sequence="4" action="action_examin_student" id="examin_student_menu" groups="examin.group_examin_teacher"></menuitem>
 
 <record model="ir.ui.view" id="view_examin_student_tree">
     <field name="name">examin.student.tree</field>

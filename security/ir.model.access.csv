@@ -1,2 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_examin_examin,examin.examin,model_examin_examin,,1,0,0,0
+access_examin_exam_status_teacher,examin.exam.status.teacher,model_examin_exam_status,examin.group_examin_teacher,1,0,0,0
+access_examin_exam_teacher,examin.exam.teacher,model_examin_exam,examin.group_examin_teacher,1,1,1,1
+access_examin_question_teacher,examin.question.teacher,model_examin_question,examin.group_examin_teacher,1,1,1,1
+access_examin_question_category_teacher,examin.question.category.teacher,model_examin_question_category,examin.group_examin_teacher,1,1,1,1
+access_examin_user_participant_teacher,examin.user.participant.teacher,model_examin_user_participant,examin.group_examin_teacher,1,1,1,1
+access_examin_user_participant_line_teacher,examin.user.participant.line.teacher,model_examin_user_participant_line,examin.group_examin_teacher,1,1,1,1
+access_examin_exam_status_student,examin.exam.status.student,model_examin_exam_status,examin.group_examin_student,1,0,0,0
+access_examin_exam_student,examin.exam.student,model_examin_exam,examin.group_examin_student,1,0,0,0
+access_examin_question_student,examin.question.student,model_examin_question,examin.group_examin_student,1,0,0,0
+access_examin_question_category_student,examin.question.category.student,model_examin_question_category,examin.group_examin_student,1,0,0,0
+access_examin_user_participant_student,examin.user.participant.student,model_examin_user_participant,examin.group_examin_student,1,0,0,0
+access_examin_user_participant_line_student,examin.user.participant.line.student,model_examin_user_participant_line,examin.group_examin_student,1,0,0,0

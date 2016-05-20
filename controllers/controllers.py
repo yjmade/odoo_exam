@@ -13,7 +13,7 @@ class Examin(http.Controller):
 
     @http.route('/examin/results', website=True, auth="user", type="http", method="POST")
     def post_exam(self, exam_id, **kwargs):
-        rec = http.request.env["examin.user.participant"].browse(int(http.request.params["exam_id"]))
+        rec = http.request.env["examin.user.participant"].sudo().browse(int(http.request.params["exam_id"]))
         for question_line in rec.lines:
             answer = http.request.params.get("question%s" % question_line.seq)
             if answer:

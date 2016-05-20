@@ -29,8 +29,8 @@
 
 
 
-<menuitem name="My Exam" sequence="1" id="student_exam_main_menu" parent="exam_main_menu"></menuitem>
-<menuitem name="My Exam" sequence="0" id="student_exam_menu" parent="student_exam_main_menu" action="action_user_exam"></menuitem>
+<menuitem name="My Exam" sequence="1" id="student_exam_main_menu" parent="exam_main_menu" groups="examin.group_examin_student"></menuitem>
+<menuitem name="My Exam" sequence="0" id="student_exam_menu" parent="student_exam_main_menu" action="action_user_exam" groups="examin.group_examin_student"></menuitem>
 
     </data>
 </openerp>
