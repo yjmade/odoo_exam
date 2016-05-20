@@ -250,3 +250,14 @@ class ResUser(models.Model):
     @api.model
     def create(self, value):
         return super(ResUser, self).create(self._sync_value(value))
+
+
+class IrModelData(models.Model):
+    _inherit = 'ir.model.data'
+
+    @api.model
+    def _update(self, model, module, values, xml_id=False, *args, **kwargs):
+        if model == "res.users":
+            if xml_id is False:
+                xml_id = ""
+        return super(IrModelData, self)._update(model, module, values, xml_id, *args, **kwargs)
