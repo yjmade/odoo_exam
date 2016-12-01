@@ -23,7 +23,9 @@ class Exam(models.Model):
     start_time = fields.Datetime()
     end_time = fields.Datetime()
     exam_minutes = fields.Integer()
-    users = fields.Many2many("res.users", compute="_get_users", inverse="_set_users")
+    groups = fields.Many2many("examin.user.groups", compute="_get_groups", inverse="_set_groups")
+    users_count = fields.Integer(compute="_get_users_count")
+    average_score = fields.Float(compute="_get_average_score", string="平均分")
 
     def get_default_status(self):
         return self.env["examin.exam.status"].search([("name", "=", "Draft")])
@@ -31,18 +33,31 @@ class Exam(models.Model):
     status = fields.Many2one("examin.exam.status", default=get_default_status)
 
     @api.one
-    @api.depends("user_lines")
-    def _get_users(self):
-        self.users = self.env["res.users"].browse([user_line.user.id for user_line in self.user_lines])
+    @api.depends("user_lines.score")
+    def _get_average_score(self):
+        scores = [line.score for line in self.user_lines if line.score]
+        self.average_score = sum(scores) / len(scores)
 
-    def _set_users(self):
+    @api.one
+    @api.depends("user_lines")
+    def _get_users_count(self):
+        self.users_count = len(self.user_lines)
+
+    @api.one
+    @api.depends("user_lines")
+    def _get_groups(self):
+        self.groups = self.env["examin.user.groups"]
+
+    def _set_groups(self):
         exist_user_lines = {
-            user_line.user: user_line
+            user_line.user
             for user_line in self.user_lines
         }
-        for user in self.users:
-            if user not in exist_user_lines:
-                self._generate_user_line(user)
+        for group in self.groups:
+            for user in group.users:
+                if user not in exist_user_lines:
+                    self._generate_user_line(user)
+                    exist_user_lines.add(user)
 
     def _generate_user_line(self, user):
         user_line_model = self.env["examin.user.participant"]
