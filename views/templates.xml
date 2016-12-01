@@ -109,6 +109,11 @@
                                     </tree>
                                 </field>
                                 <field name="user_lines" context="{'default_examin':active_id}" nolabel="1" class="oe_read_only">
+                                    <tree>
+                                        <field name="user"></field>
+                                        <field name="status"></field>
+                                        <field name="score"></field>
+                                    </tree>
 
                                     <form>
                                         <header>
