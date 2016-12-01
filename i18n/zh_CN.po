@@ -292,7 +292,7 @@ msgstr "学号"
 #. module: examin
 #: model:ir.ui.view,arch_db:examin.view_user_exam_tree
 msgid "Resume Test"
-msgstr "%s考试"
+msgstr "继续考试"
 
 #. module: examin
 #: model:examin.exam.status,name:examin.examin_exam_running
@@ -317,7 +317,7 @@ msgstr "顺序"
 #. module: examin
 #: model:ir.ui.view,arch_db:examin.view_user_exam_tree
 msgid "Start Test"
-msgstr "开始时间"
+msgstr "开始考试"
 
 #. module: examin
 #: model:ir.model.fields,field_description:examin.field_examin_exam_start_time
