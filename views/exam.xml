@@ -2,7 +2,7 @@
     <data>
 
 
-<act_window id="action_user_exam" name="My Exam" res_model="examin.user.participant" view_mode="tree,form" domain="[('user.id','=',user.id)]"></act_window>
+<act_window id="action_user_exam" name="My Exam" res_model="examin.user.participant" view_mode="tree,form" domain="[('user.id','=',uid)]"></act_window>
 
 
 <record model="ir.ui.view" id="view_user_exam_tree">
