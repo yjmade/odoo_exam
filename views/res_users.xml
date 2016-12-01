@@ -1,16 +1,32 @@
 <openerp>
     <data>
 
-<act_window name="Student" res_model="res.users" view_mode="tree,form" id="action_examin_student" context="{'default_groups_ref':['examin.group_examin_student','base.group_user']}"></act_window>
+<record model="ir.actions.act_window" id="action_student_groups">
+    <field name="name">学生分组</field>
+    <field name="res_model">examin.user.groups</field>
+    <field name="view_mode">tree</field>
+</record>
+<menuitem name="学生分组" parent="configuration_main_menu" sequence="5" action="action_student_groups" id="examin_student_groups_menu" groups="examin.group_examin_teacher"></menuitem>
 
+<record model="ir.ui.view" id="view_examin_student_groups_tree">
+    <field name="name">examin.user.groups.tree</field>
+    <field name="model">examin.user.groups</field>
+    <field name="arch" type="xml">
+        <tree editable="top">
+            <field name="name"></field>
+            <field name="users_count"></field>
+            <button string="学生" type="object" name="action_users"></button>
+        </tree>
+    </field>
+</record>
 
-<menuitem name="Student" parent="configuration_main_menu" sequence="4" action="action_examin_student" id="examin_student_menu" groups="examin.group_examin_teacher"></menuitem>
 
 <record model="ir.ui.view" id="view_examin_student_tree">
     <field name="name">examin.student.tree</field>
     <field name="model">res.users</field>
     <field name="arch" type="xml">
         <tree>
+            <field name="group"></field>
             <field name="name"></field>
             <field name="ref_id"></field>
         </tree>
@@ -26,6 +42,7 @@
             <sheet>
                 <field name="image" widget="image" class="oe_avatar"></field>
                 <div class="oe_title">
+                    <field name="group" placeholder="分组"></field>
                     <h1>
                         <field name="name" placeholder="Name"></field>
                     </h1>

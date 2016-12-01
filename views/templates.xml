@@ -4,7 +4,6 @@
         <act_window id="action_examin_question_category" name="Library" res_model="examin.question.category" view_mode="tree"></act_window>
         <act_window id="action_examin_exam" name="Exam" res_model="examin.exam" view_mode="tree,form"></act_window>
 
-
         <record model="ir.ui.view" id="view_examin_question_form">
             <field name="name">examin.question.form</field>
             <field name="model">examin.question</field>

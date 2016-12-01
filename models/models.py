@@ -237,6 +237,7 @@ class ResUser(models.Model):
 
     ref_id = fields.Char(string=_("Ref Id"))
     exams = fields.One2many("examin.user.participant", "user")
+    group = fields.Many2one(comodel_name="examin.user.groups", string=u"分组")
 
     def _sync_value(self, value):
         if "name" in value:
@@ -262,3 +263,34 @@ class IrModelData(models.Model):
             if xml_id is False:
                 xml_id = ""
         return super(IrModelData, self)._update(cr, uid, model, module, values, xml_id, store, noupdate, mode, res_id, context)
+
+
+class UserGroup(models.Model):
+    _name = "examin.user.groups"
+
+    name = fields.Char(string=u"名称", max_length=100)
+    users = fields.One2many(comodel_name="res.users", inverse_name="group", string=u"学生")
+
+    users_count = fields.Integer(string=u"学生数", compute="_get_users_count")
+
+    @api.depends("users")
+    @api.one
+    def _get_users_count(self):
+        self.users_count = len(self.users)
+
+    @api.multi
+    def action_users(self, *args, **kwargs):
+        ir_model_data = self.env["ir.model.data"]
+        return {
+            'name': self.name,
+            'view_mode': 'tree,form',
+            # 'view_type': 'tree',
+            'res_model': 'res.users',
+            # 'res_id': partial_id,
+            'type': 'ir.actions.act_window',
+            # 'nodestroy': True,
+            # 'target': 'new',
+            'domain': [("group.id", "=", self.id)],
+            "context": {'default_group': self.id, 'default_groups_ref': ['examin.group_examin_student', 'base.group_user']},
+            "views": [[ir_model_data.xmlid_lookup("examin.view_examin_student_tree")[2], "tree"], [ir_model_data.xmlid_lookup("examin.view_examin_student_form")[2], "form"]]
+        }

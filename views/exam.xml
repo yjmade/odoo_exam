@@ -2,7 +2,7 @@
     <data>
 
 <record model="ir.actions.act_window" id="action_user_exam">
-    <field name="My Exam"></field>
+    <field name="name">My Exam</field>
     <field name="res_model">examin.user.participant</field>
     <field name="view_mode">tree,form</field>
     <field name="domain">[('user.id','=',uid)]</field>
