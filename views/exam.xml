@@ -1,8 +1,12 @@
 <openerp>
     <data>
 
-
-<act_window id="action_user_exam" name="My Exam" res_model="examin.user.participant" view_mode="tree,form" domain="[('user.id','=',uid)]"></act_window>
+<record model="ir.actions.act_window" id="action_user_exam">
+    <field name="My Exam"></field>
+    <field name="res_model">examin.user.participant</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('user.id','=',uid)]</field>
+</record>
 
 
 <record model="ir.ui.view" id="view_user_exam_tree">
