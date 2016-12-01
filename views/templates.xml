@@ -182,6 +182,21 @@
             </field>
         </record>
 
+        <record model="ir.actions.act_window.view" id="action_exam_participant_form">
+            <field name="act_window_id" ref="action_exam_participant"></field>
+            <field name="sequence" eval="20"></field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_examin_user_participant_form"></field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_exam_participant_tree">
+            <field name="act_window_id" ref="action_exam_participant"></field>
+            <field name="sequence" eval="10"></field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_examin_user_participant_tree"></field>
+        </record>
+
+
 
         <menuitem name="Exam" sequence="0" id="exam_main_menu" groups="examin.group_examin_teacher,examin.group_examin_student"></menuitem>
         <menuitem name="Configuration" parent="exam_main_menu" id="configuration_main_menu" groups="examin.group_examin_teacher"></menuitem>
