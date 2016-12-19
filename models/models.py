@@ -36,7 +36,10 @@ class Exam(models.Model):
     @api.depends("user_lines.score")
     def _get_average_score(self):
         scores = [line.score for line in self.user_lines if line.score]
-        self.average_score = sum(scores) / len(scores)
+        if not scores:
+            self.average_score = False
+        else:
+            self.average_score = sum(scores) / len(scores)
 
     @api.one
     @api.depends("user_lines")
